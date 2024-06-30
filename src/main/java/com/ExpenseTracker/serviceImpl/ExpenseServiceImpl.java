@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
-    @Autowired
+       @Autowired
     ExpenseRepo expenseRepo;
 
     @Override
@@ -36,8 +36,17 @@ public class ExpenseServiceImpl implements ExpenseService {
             return  null;
         }
      ExpenseEntity existingEntity = expenseEntityOptional.get();
-        existingEntity.s
+        existingEntity.setExpenseId(expenseId);
+        existingEntity.setBills(existingEntity.getBills());
+        existingEntity.setCommute(existingEntity.getCommute());
+        existingEntity.setElectricity(existingEntity.getElectricity());
+        existingEntity.setMiscellaneous(existingEntity.getMiscellaneous());
+        return  existingEntity;
+    }
 
+    @Override
+    public void deleteExpense(Integer expenseId) {
+        expenseRepo.deleteById(expenseId);
     }
 
 
