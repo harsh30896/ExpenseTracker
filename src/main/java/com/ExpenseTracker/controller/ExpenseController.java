@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("home/")
 public class ExpenseController {
-
     @Autowired
     ExpenseService expenseService;
 
@@ -18,7 +17,7 @@ public class ExpenseController {
     }
 
     @PostMapping("update/{id}")
-    public ExpenseEntity updateExpense(@PathVariable Integer id,@RequestBody Product product){
-
+    public ExpenseEntity updateExpense(@PathVariable Integer id,@RequestBody ExpenseEntity expenseEntity){
+        return expenseService.updateExpenses(id,expenseEntity);
     }
 }
