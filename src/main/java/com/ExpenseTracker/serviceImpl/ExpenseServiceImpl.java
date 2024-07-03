@@ -26,9 +26,6 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expenseRepo.findAll();
     }
 
-
-
-
     @Override
     public ExpenseEntity updateExpenses(Long expenseId, ExpenseEntity expenseEntity) {
         return expenseRepo.findById(expenseId)
@@ -55,8 +52,10 @@ public class ExpenseServiceImpl implements ExpenseService {
         return null;
     }
 
-//    @Override
-//    public List<ExpenseEntity> getExpenseByCategory(Category category) {
-////        return List.of();
-//    }
+    @Override
+    public List<ExpenseEntity> findAll() {
+        return expenseRepo.findAll();
+    }
+
+
 }

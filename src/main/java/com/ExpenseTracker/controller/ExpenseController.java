@@ -2,12 +2,20 @@ package com.ExpenseTracker.controller;
 
 import com.ExpenseTracker.entity.ExpenseEntity;
 import com.ExpenseTracker.service.ExpenseService;
+import com.ExpenseTracker.utility.CSVHelper;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.*;
 
 @RestController
 @RequestMapping("home/")
@@ -15,6 +23,7 @@ public class ExpenseController {
     @Autowired
     ExpenseService expenseService;
 
+    
     @PostMapping("create")
     public ResponseEntity<ExpenseEntity> createExpense(@RequestBody ExpenseEntity expenseEntity){
         ExpenseEntity createExpen = expenseService.addExpense(expenseEntity);
@@ -25,4 +34,24 @@ public class ExpenseController {
     public ExpenseEntity updateExpense(@PathVariable Long id,@RequestBody ExpenseEntity expenseEntity){
         return expenseService.updateExpenses(id,expenseEntity);
     }
+    
+    @GetMapping("/export")
+    public ResponseEntity<StreamingResponseBody> exportToCsv() {
+        List<ExpenseEntity> expenses = expenseService.findAll();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename=expenses.csv");
+
+        StreamingResponseBody stream = outputStream -> {
+            try (Writer writer = new OutputStreamWriter(outputStream)) {
+                CSVHelper.writeExpensesToCsv(writer, expenses);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to write CSV", e);
+            }
+        };
+
+        return new ResponseEntity<>(stream, headers, HttpStatus.OK);
+    }
+
+ 
 }
