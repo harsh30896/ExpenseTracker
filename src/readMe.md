@@ -3,7 +3,7 @@
 2.View By Category
 
 # Data Filtering
-1. Allow user to see expenses according to date
+1. Allow user to see expenses according to date :- Done
 
 # Reporting
 1. Provide a summary of expenses by category and date range
@@ -18,5 +18,5 @@
 1. Send notification or alerts when the user is approaching budget limit
 
 # Export Data.
-1. Allow user to export their expense data to CSV or Excel files
+1. Allow user to export their expense data to CSV or Excel files :- Done
  

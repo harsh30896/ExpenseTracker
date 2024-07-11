@@ -1,17 +1,15 @@
 package com.ExpenseTracker.controller;
 
 import com.ExpenseTracker.entity.ExpenseEntity;
+import com.ExpenseTracker.enums.Category;
 import com.ExpenseTracker.service.ExpenseService;
 import com.ExpenseTracker.utility.CSVHelper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
-
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -53,5 +51,16 @@ public class ExpenseController {
         return new ResponseEntity<>(stream, headers, HttpStatus.OK);
     }
 
+    @PostMapping("/getCategory/{category}")
+    public List<ExpenseEntity> viewByCategory(@PathVariable Category category) {
+    	List<ExpenseEntity> getByCategory=expenseService.getExpenseByCategory(category);
+    	return getByCategory;
+    }
+
+    @GetMapping("/allResponses")
+    public List<ExpenseEntity> getAllResponses(){
+        List<ExpenseEntity> allResponses = expenseService.getAllExpenses();
+        return allResponses;
+    }
  
 }

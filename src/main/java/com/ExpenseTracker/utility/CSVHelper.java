@@ -19,8 +19,6 @@ public class CSVHelper {
 						expense.getDate(),expense.getDescription());
 			}
 		}
-	
-		
 	}
 
 }

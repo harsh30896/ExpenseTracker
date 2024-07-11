@@ -49,7 +49,8 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<ExpenseEntity> getExpenseByCategory(Category category) {
-        return null;
+          List<ExpenseEntity> getExpenCat = expenseRepo.findByCategory(category);
+          return getExpenCat;
     }
 
     @Override
