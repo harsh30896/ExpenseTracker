@@ -18,5 +18,23 @@
 1. Send notification or alerts when the user is approaching budget limit
 
 # Export Data.
-1. Allow user to export their expense data to CSV or Excel files :- Done
- 
+1. Allow user to export their expense data to CSV or Excel files
+2. Excel Files
+
+
+{
+    "Status":true,
+    summary:{
+        category:{
+            Bills:{
+                expenseEntity{
+        id, name,     
+}
+    }
+    }   
+    }
+}
+Add user to the entity:- User specific
+Each user have their different budget
+Table:- ExpenseBudget - Id,Category,Budget Limit, UserId(Foreign Key)
+
