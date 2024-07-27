@@ -18,19 +18,19 @@ import java.io.Writer;
 import java.util.*;
 
 @RestController
-@RequestMapping("home/")
+@RequestMapping("/home")
 public class ExpenseController {
     @Autowired
     ExpenseService expenseService;
 
     
-    @PostMapping("create")
+    @PostMapping("/createExpenses")
     public ResponseEntity<ExpenseEntity> createExpense(@RequestBody ExpenseRequest expenseRequest){
         ExpenseEntity createExpen = expenseService.addExpense(expenseRequest);
         return new ResponseEntity<>(createExpen, HttpStatus.CREATED);
     }
 
-    @PostMapping("update/{id}")
+    @PostMapping("/update/{id}")
     public ExpenseEntity updateExpense(@PathVariable Long id,@RequestBody ExpenseEntity expenseEntity){
         return expenseService.updateExpenses(id,expenseEntity);
     }

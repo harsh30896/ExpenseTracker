@@ -26,13 +26,10 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public ExpenseEntity addExpense(ExpenseRequest expenseRequest) {
         ExpenseEntity expenseEntity=new ExpenseEntity();
-       // expenseEntity.setExpenseId(expenseRequest.getExpenseId());
         expenseEntity.setAmount(expenseRequest.getAmount());
         expenseEntity.setDate(expenseRequest.getDate());
         expenseEntity.setDescription(expenseRequest.getDescription());
         expenseEntity.setCategory(expenseRequest.getCategory());
-       // expenseEntity.setUser(expenseRequest.getUser());
-
         UserEntity dbUser = userRepo.findById(expenseRequest.getUser().getUserId()).
                 orElseThrow(()->new ResourceNotFoundException("User not found with following id = "+expenseRequest.
                         getUser().getUserId()));

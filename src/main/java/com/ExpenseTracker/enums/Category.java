@@ -8,3 +8,4 @@ public enum Category {
     RENT,
     MISCELLANEOUS
 }
+
