@@ -1,14 +1,18 @@
 package com.ExpenseTracker.serviceImpl;
 
+import com.ExpenseTracker.dto.ExpenseRequest;
+import com.ExpenseTracker.dto.ExpenseResponse;
 import com.ExpenseTracker.entity.ExpenseEntity;
+import com.ExpenseTracker.entity.UserEntity;
 import com.ExpenseTracker.enums.Category;
+import com.ExpenseTracker.exceptionHandler.ResourceNotFoundException;
 import com.ExpenseTracker.repository.ExpenseRepo;
+import com.ExpenseTracker.repository.UserRepo;
 import com.ExpenseTracker.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
@@ -16,9 +20,31 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Autowired
     ExpenseRepo expenseRepo;
 
+    @Autowired
+    UserRepo userRepo;
+
     @Override
-    public ExpenseEntity addExpense(ExpenseEntity expenseEntity) {
-        return expenseRepo.save(expenseEntity);
+    public ExpenseEntity addExpense(ExpenseRequest expenseRequest) {
+        ExpenseEntity expenseEntity=new ExpenseEntity();
+       // expenseEntity.setExpenseId(expenseRequest.getExpenseId());
+        expenseEntity.setAmount(expenseRequest.getAmount());
+        expenseEntity.setDate(expenseRequest.getDate());
+        expenseEntity.setDescription(expenseRequest.getDescription());
+        expenseEntity.setCategory(expenseRequest.getCategory());
+       // expenseEntity.setUser(expenseRequest.getUser());
+
+        UserEntity dbUser = userRepo.findById(expenseRequest.getUser().getUserId()).
+                orElseThrow(()->new ResourceNotFoundException("User not found with following id = "+expenseRequest.
+                        getUser().getUserId()));
+        if(dbUser!=null){
+            expenseEntity.setUser(expenseRequest.getUser());
+        }
+        ExpenseEntity savedExpenseEntity = expenseRepo.save(expenseEntity);
+        savedExpenseEntity.getUser().setAge(dbUser.getAge());
+        savedExpenseEntity.getUser().setName(dbUser.getName());
+        savedExpenseEntity.getUser().setEmail(dbUser.getEmail());
+
+        return savedExpenseEntity;
     }
 
     @Override

@@ -15,11 +15,11 @@
 1. Allow user to set up recurring expenses.
 
 # Notification
-1. Send notification or alerts when the user is approaching budget limit
+1. Send notification or alerts when the user is approaching budget limit :- in between
 
 # Export Data.
-1. Allow user to export their expense data to CSV or Excel files
-2. Excel Files
+1. Allow user to export their expense data to CSV or Excel files :- done
+2. Excel Files  :- done
 
 
 {

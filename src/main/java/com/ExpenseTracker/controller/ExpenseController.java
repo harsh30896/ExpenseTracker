@@ -1,6 +1,8 @@
 package com.ExpenseTracker.controller;
 
+import com.ExpenseTracker.dto.ExpenseRequest;
 import com.ExpenseTracker.entity.ExpenseEntity;
+import com.ExpenseTracker.entity.UserEntity;
 import com.ExpenseTracker.enums.Category;
 import com.ExpenseTracker.service.ExpenseService;
 import com.ExpenseTracker.utility.CSVHelper;
@@ -23,8 +25,8 @@ public class ExpenseController {
 
     
     @PostMapping("create")
-    public ResponseEntity<ExpenseEntity> createExpense(@RequestBody ExpenseEntity expenseEntity){
-        ExpenseEntity createExpen = expenseService.addExpense(expenseEntity);
+    public ResponseEntity<ExpenseEntity> createExpense(@RequestBody ExpenseRequest expenseRequest){
+        ExpenseEntity createExpen = expenseService.addExpense(expenseRequest);
         return new ResponseEntity<>(createExpen, HttpStatus.CREATED);
     }
 
@@ -62,5 +64,7 @@ public class ExpenseController {
         List<ExpenseEntity> allResponses = expenseService.getAllExpenses();
         return allResponses;
     }
+
+
  
 }
