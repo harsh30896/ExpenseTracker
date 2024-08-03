@@ -38,3 +38,7 @@ Add user to the entity:- User specific
 Each user have their different budget
 Table:- ExpenseBudget - Id,Category,Budget Limit, UserId(Foreign Key)
 
+# Implement swagger
+1. Implement swagger in the existing code
+
+
