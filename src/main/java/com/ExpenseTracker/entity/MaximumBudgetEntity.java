@@ -1,5 +1,6 @@
 package com.ExpenseTracker.entity;
 
+import com.ExpenseTracker.enums.Category;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,24 +8,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
-public class UserEntity {
+public class MaximumBudgetEntity
+{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long budgetId;
     private Long userId;
-    private String name;
-    private String age;
-    private String email;
-
-    @OneToMany(mappedBy = "user")
-    private List<ExpenseEntity> expenseEntity;
-
-
+    @Enumerated(EnumType.STRING)
+    private Category category;
+    private Double maxAllowedAmount;
 }

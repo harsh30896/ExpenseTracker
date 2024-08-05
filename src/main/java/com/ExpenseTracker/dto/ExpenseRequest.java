@@ -17,4 +17,5 @@ public class ExpenseRequest {
     private Date date;
     private Category category;
     private UserEntity user;
+    private Double maxAllowedAmount;
 }

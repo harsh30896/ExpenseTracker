@@ -2,7 +2,7 @@ package com.ExpenseTracker.controller;
 
 import com.ExpenseTracker.dto.ExpenseRequest;
 import com.ExpenseTracker.entity.ExpenseEntity;
-import com.ExpenseTracker.entity.UserEntity;
+
 import com.ExpenseTracker.enums.Category;
 import com.ExpenseTracker.service.ExpenseService;
 import com.ExpenseTracker.utility.CSVHelper;
@@ -18,7 +18,7 @@ import java.io.Writer;
 import java.util.*;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/api/v1")
 public class ExpenseController {
     @Autowired
     ExpenseService expenseService;
