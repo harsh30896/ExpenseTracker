@@ -15,3 +15,4 @@ public class BudgetDto {
     private Long amount;
     private UserEntity user;
 }
+

@@ -2,7 +2,6 @@ package com.ExpenseTracker.controller;
 
 import com.ExpenseTracker.dto.ExpenseRequest;
 import com.ExpenseTracker.entity.ExpenseEntity;
-
 import com.ExpenseTracker.enums.Category;
 import com.ExpenseTracker.service.ExpenseService;
 import com.ExpenseTracker.utility.CSVHelper;
@@ -23,7 +22,6 @@ public class ExpenseController {
     @Autowired
     ExpenseService expenseService;
 
-    
     @PostMapping("/createExpenses")
     public ResponseEntity<ExpenseEntity> createExpense(@RequestBody ExpenseRequest expenseRequest){
         ExpenseEntity createExpen = expenseService.addExpense(expenseRequest);

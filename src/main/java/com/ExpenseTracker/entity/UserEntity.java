@@ -22,6 +22,7 @@ public class UserEntity {
     private String name;
     private String age;
     private String email;
+    private String contactNumber;
 
     @OneToMany(mappedBy = "user")
     private List<ExpenseEntity> expenseEntity;

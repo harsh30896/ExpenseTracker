@@ -1,8 +1,10 @@
 package com.ExpenseTracker.service;
 
 import com.ExpenseTracker.entity.UserEntity;
-import org.springframework.http.ResponseEntity;
+import java.util.List;
 
 public interface UserService {
     UserEntity createUser(UserEntity user);
+
+    List<UserEntity> getAllUser();
 }

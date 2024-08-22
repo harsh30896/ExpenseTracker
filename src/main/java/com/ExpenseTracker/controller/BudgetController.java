@@ -11,7 +11,6 @@ import com.ExpenseTracker.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -42,6 +41,5 @@ public class BudgetController {
         }
         return new CustomResponseEntity<>("true","your budget is updated for this category = "
                 +category+"your new amount = "+amount,null);
-
     }
 }

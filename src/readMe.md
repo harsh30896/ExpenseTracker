@@ -12,14 +12,14 @@
 1. Allow user to set different budget for each category
 
 # Recurring Expenses
-1. Allow user to set up recurring expenses.
+1. Allow user to set up recurring expenses. :- 
 
-# Notification
-1. Send notification or alerts when the user is approaching budget limit :- in between
+# Notification 
+1. Send notification or alerts when the user is approaching budget limit :- Done
 
-# Export Data.
-1. Allow user to export their expense data to CSV or Excel files :- done
-2. Excel Files  :- done
+# Export Data
+1. Allow user to export their expense data to CSV or Excel files :- Done
+2. Excel Files  :- Done
 
 
 {
@@ -39,6 +39,6 @@ Each user have their different budget
 Table:- ExpenseBudget - Id,Category,Budget Limit, UserId(Foreign Key)
 
 # Implement swagger
-1. Implement swagger in the existing code
+1. Implement swagger in the existing code :- Done
 
 
