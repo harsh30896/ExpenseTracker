@@ -22,6 +22,7 @@ public class ExpenseController {
     @Autowired
     ExpenseService expenseService;
 
+
     @PostMapping("/createExpenses")
     public ResponseEntity<ExpenseEntity> createExpense(@RequestBody ExpenseRequest expenseRequest){
         ExpenseEntity createExpen = expenseService.addExpense(expenseRequest);
@@ -62,6 +63,14 @@ public class ExpenseController {
         List<ExpenseEntity> allResponses = expenseService.getAllExpenses();
         System.out.println(allResponses);
         return allResponses;
+    }
+
+    @PostMapping("/payBills")
+    public ExpenseEntity payBills(@RequestParam(name = "Category")String category,
+                                  @RequestParam(name = "MaximumAmount")Double amount,
+                                  @RequestParam(name = "userId")Long userId){
+            return null;
+
     }
 
 }
