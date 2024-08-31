@@ -1,5 +1,6 @@
 package com.ExpenseTracker.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class UserEntity {
     private String contactNumber;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     private List<ExpenseEntity> expenseEntity;
 
 

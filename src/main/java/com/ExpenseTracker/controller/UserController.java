@@ -1,6 +1,7 @@
 package com.ExpenseTracker.controller;
 
 import com.ExpenseTracker.entity.UserEntity;
+import com.ExpenseTracker.repository.UserRepo;
 import com.ExpenseTracker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class UserController {
 
     @GetMapping("/getAllUser")
     public List<UserEntity> getAllUser(){
-        List<UserEntity> userEntities = userService.getAllUser();
-        return userEntities;
+        List<UserEntity> getAll = userService.getAllUsers();
+        return getAll;
     }
 }

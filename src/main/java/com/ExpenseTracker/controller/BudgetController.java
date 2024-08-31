@@ -16,11 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 public class BudgetController {
-
-
     @Autowired
     UserRepo userRepo;
-
     @Autowired
     ExpenseRepo expenseRepo;
 

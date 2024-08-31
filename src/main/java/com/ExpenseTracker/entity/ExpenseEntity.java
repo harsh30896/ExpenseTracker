@@ -1,5 +1,6 @@
 package com.ExpenseTracker.entity;
 import com.ExpenseTracker.enums.Category;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,6 +26,7 @@ public class ExpenseEntity {
         private Category category;
 
         @ManyToOne
+        @JsonBackReference
         @JoinColumn(name = "user_id", nullable = false)
         private UserEntity user;
 

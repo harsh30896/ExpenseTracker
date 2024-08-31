@@ -60,9 +60,8 @@ public class ExpenseController {
     @GetMapping("/allResponses")
     public List<ExpenseEntity> getAllResponses(){
         List<ExpenseEntity> allResponses = expenseService.getAllExpenses();
+        System.out.println(allResponses);
         return allResponses;
     }
 
-
- 
 }
