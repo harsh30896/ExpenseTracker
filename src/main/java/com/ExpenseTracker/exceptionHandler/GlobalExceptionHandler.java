@@ -13,13 +13,14 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ResourceNotFoundException.class)
+    @ExceptionHandler(RuntimeException.class)
 
-    public ResponseEntity<Map<String,Object>> handleResourceNotFoundException(ResourceNotFoundException ex){
+    public ResponseEntity<Map<String,Object>> handleException(RuntimeException ex){
         Map<String,Object> response = new HashMap<>();
         response.put("status",false);
         response.put("message",ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
+
 
 }

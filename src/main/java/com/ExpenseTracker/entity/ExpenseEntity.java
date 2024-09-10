@@ -14,7 +14,7 @@ import java.util.Date;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Setter
-public class ExpenseEntity {
+public class  ExpenseEntity {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

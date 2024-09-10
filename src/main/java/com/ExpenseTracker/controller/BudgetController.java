@@ -1,6 +1,5 @@
 package com.ExpenseTracker.controller;
 
-import com.ExpenseTracker.dto.BudgetDto;
 import com.ExpenseTracker.dto.CustomResponseEntity;
 import com.ExpenseTracker.entity.ExpenseEntity;
 import com.ExpenseTracker.entity.UserEntity;
@@ -9,9 +8,7 @@ import com.ExpenseTracker.exceptionHandler.ResourceNotFoundException;
 import com.ExpenseTracker.repository.ExpenseRepo;
 import com.ExpenseTracker.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -21,8 +18,9 @@ public class BudgetController {
     @Autowired
     ExpenseRepo expenseRepo;
 
+
     @PutMapping("/manageBudget")
-    public CustomResponseEntity createBudgetFor(@RequestParam(name ="userId")Integer userId,
+    public CustomResponseEntity updateBudget(@RequestParam(name ="userId")Integer userId,
                                                 @RequestParam(name = "Category")String category,
                                                 @RequestParam(name = "MaximumAmount")Double amount){
         UserEntity userEntity = userRepo.findById(Long.valueOf(userId))
@@ -39,4 +37,6 @@ public class BudgetController {
         return new CustomResponseEntity<>("true","your budget is updated for this category = "
                 +category+"your new amount = "+amount,null);
     }
+
+
 }

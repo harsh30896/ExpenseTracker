@@ -2,6 +2,7 @@ package com.ExpenseTracker.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
 @Entity
 public class UserEntity {
     @Id
@@ -27,7 +28,12 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     @JsonBackReference
+    @JsonManagedReference
     private List<ExpenseEntity> expenseEntity;
 
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
+    @JsonManagedReference
+    private List<BudgetEntity> budgetEntities;
 
 }

@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+
+
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -18,8 +20,8 @@ public class UserController {
 
     @PostMapping("/createUser")
     public ResponseEntity<UserEntity> newUserCreate(@RequestBody UserEntity userEntity){
-        UserEntity userEntity1 =  userService.createUser(userEntity);
-       return new ResponseEntity<>(userEntity1,HttpStatus.CREATED);
+        UserEntity user =  userService.createUser(userEntity);
+       return new ResponseEntity<>(user,HttpStatus.CREATED);
     }
 
     @GetMapping("/getAllUser")
